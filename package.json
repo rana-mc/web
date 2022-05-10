@@ -1,6 +1,6 @@
 {
   "name": "@rana-mc/web",
-  "version": "0.2.3",
+  "version": "0.2.2",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -11,7 +11,7 @@
     "watch": "npm run dev",
     "dev:css": "less-watch-compiler",
     "start": "remix-serve build",
-    "postinstall": "npm run build"
+    "postinstall": "npx cross-env NODE_ENV=production remix build"
   },
   "dependencies": {
     "@remix-run/react": "^1.4.3",
