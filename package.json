@@ -1,0 +1,43 @@
+{
+  "name": "@rana-mc/web",
+  "version": "0.2.2",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production remix build",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "watch": "npm run dev",
+    "dev:css": "less-watch-compiler",
+    "start": "remix-serve build"
+  },
+  "dependencies": {
+    "@remix-run/react": "^1.4.3",
+    "@remix-run/serve": "^1.4.3",
+    "@remix-run/server-runtime": "^1.4.3",
+    "@rsuite/icons": "^1.0.2",
+    "@types/lodash.debounce": "^4.0.7",
+    "axios": "^0.27.2",
+    "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "less-watch-compiler": "^1.16.3",
+    "lodash.debounce": "^4.0.8",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "remix": "^1.4.3",
+    "rsuite": "^5.11.0",
+    "socket.io-client": "^4.5.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.4.3",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.3",
+    "concurrently": "^7.1.0",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "sideEffects": false
+}
