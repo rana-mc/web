@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "watch": "npm run dev",
     "dev:css": "less-watch-compiler",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@remix-run/react": "^1.4.3",
