@@ -3,7 +3,7 @@ node_modules
 /.cache
 # Maybe add postinstall script
 # /build
-/public/build
+# /public/build
 .env
 
 /app/**/**.css

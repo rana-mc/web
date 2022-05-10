@@ -1,0 +1,14 @@
+.serverCardLarge__header {
+  font-size: 22px;
+  font-weight: 500;
+  font-style: normal;
+}
+.serverCardLarge__divider {
+  margin: 16px 0;
+}
+.serverCardLarge__footer {
+  padding: 12px;
+  margin: 0 12px;
+  margin-top: 32px;
+  background-color: #f2f2f2;
+}
