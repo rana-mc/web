@@ -11,7 +11,7 @@
     "watch": "npm run dev",
     "dev:css": "less-watch-compiler",
     "start": "remix-serve build",
-    "postinstall": "npx cross-env NODE_ENV=production remix build"
+    "postinstall": "npx remix setup node && npm run build"
   },
   "dependencies": {
     "@remix-run/react": "^1.4.3",
