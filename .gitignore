@@ -1,7 +1,8 @@
 node_modules
 
 /.cache
-/build
+# Maybe add postinstall script
+# /build
 /public/build
 .env
 

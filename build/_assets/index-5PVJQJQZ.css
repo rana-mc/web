@@ -1,0 +1,17 @@
+.githubRepo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url('/icons/github.svg');
+  transition: opacity 0.25s ease-in-out;
+}
+@media (max-width: 641px) {
+  .githubRepo {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+  }
+}
+.githubRepo:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,33 @@
+.serverLogs {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  text-align: left;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 256px;
+  max-height: 512px;
+  overflow: scroll;
+  background-color: #2e2e2e;
+}
+.serverLogs__log {
+  display: block;
+}
+.serverLogs__line {
+  color: #797979;
+}
+.serverLogs__tag {
+  color: #e87d3e;
+}
+.serverLogs__classname {
+  color: #e5b567;
+}
+.serverLogs__org {
+  color: #9e86c8;
+}
+.serverLogs__url {
+  color: #6c99bb;
+}
+.serverLogs__command {
+  color: #d6d6d6;
+}
