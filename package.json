@@ -5,6 +5,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "preferGlobal": true,
+  "bin": {
+    "ranamc-web": "cli.js"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=production remix build",
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
