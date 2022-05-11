@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/mods/downloaded.tsx?browser", "../../../../app/routes/mods/downloaded.tsx"],
+  "sourcesContent": ["export { default, links, meta } from \"/Users/ebykovskikh/Desktop/web/app/routes/mods/downloaded.tsx\";", "import Layout, { links as layoutLinks } from '~/components/Layout';\n\nconst DownloadedMods = () => <Layout pageTitle=\"Downloaded\" path={['Home', 'Mods']} />;\n\nexport const meta = () => ({ title: 'RanaMC | Mods' });\n\nexport const links = () => [...layoutLinks()];\n\nexport default DownloadedMods;\n"],
+  "mappings": ";;;;;;;;;;;;AAAA;;;ACAA;AAEA,IAAM,iBAAiB,MAAM,oCAAC,gBAAD;AAAA,EAAQ,WAAU;AAAA,EAAa,MAAM,CAAC,QAAQ;AAAA;AAEpE,IAAM,OAAO,MAAO,GAAE,OAAO;AAE7B,IAAM,SAAQ,MAAM,CAAC,GAAG;AAE/B,IAAO,qBAAQ;",
+  "names": []
+}

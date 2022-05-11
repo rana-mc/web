@@ -3,7 +3,6 @@ import { io } from 'socket.io-client';
 const SOCKET_URL = 'http://localhost:3001';
 export const ranaSocket = io(SOCKET_URL);
 
-// TODO: Use from @rana-mc/types
 export enum ServerActions {
   InstallCore = 'installCore',
   Start = 'start',
@@ -16,7 +15,6 @@ export enum ServerActions {
   RemoveServer = 'removeServer',
 }
 
-// TODO: Use from @rana-mc/types
 export enum ServerStatus {
   Created = 'created',
   CoreInstalling = 'coreInstalling',
@@ -28,7 +26,6 @@ export enum ServerStatus {
   Removing = 'removing',
 }
 
-// TODO: Use from @rana-mc/types
 export enum RanaSocketEvents {
   ServerUpdate = 'serverUpdate',
   ClientServerUpdate = 'clientServerUpdate',
