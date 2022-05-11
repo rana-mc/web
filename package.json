@@ -10,7 +10,6 @@
     "ranamc-web": "cli.js"
   },
   "scripts": {
-    "postinstall": "npm run build",
     "build": "cross-env NODE_ENV=production remix build",
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "watch": "npm run dev",
