@@ -14,7 +14,6 @@
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "watch": "npm run dev",
     "dev:css": "less-watch-compiler",
-    "prestart": "npm run build",
     "start": "remix-serve build",
     "prepublishOnly": "npm run build"
   },
