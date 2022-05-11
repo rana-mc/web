@@ -14,5 +14,5 @@ export const action: ActionFunction = async ({ request }) => {
 
   // TODO: Handle create error?
 
-  return redirect(`/servers/${data.id}`);
+  return redirect(`/servers/create/${data.id}/done`);
 };
