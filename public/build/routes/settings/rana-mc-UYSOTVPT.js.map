@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/settings/rana-mc.tsx?browser", "../../../../app/routes/settings/rana-mc.tsx"],
-  "sourcesContent": ["export { default, links, meta } from \"/Users/ebykovskikh/Desktop/web/app/routes/settings/rana-mc.tsx\";", "import Layout, { links as layoutLinks } from '~/components/Layout';\n\nconst RanaMCSettings = () => (\n  <Layout pageTitle=\"RanaMC Settings\" path={['Home', 'Settings']} />\n);\n\nexport const meta = () => ({ title: 'RanaMC | Settings' });\n\nexport const links = () => [...layoutLinks()];\n\nexport default RanaMCSettings;\n"],
-  "mappings": ";;;;;;;;;;;;AAAA;;;ACAA;AAEA,IAAM,iBAAiB,MACrB,oCAAC,gBAAD;AAAA,EAAQ,WAAU;AAAA,EAAkB,MAAM,CAAC,QAAQ;AAAA;AAG9C,IAAM,OAAO,MAAO,GAAE,OAAO;AAE7B,IAAM,SAAQ,MAAM,CAAC,GAAG;AAE/B,IAAO,kBAAQ;",
-  "names": []
-}

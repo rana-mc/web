@@ -1,1 +1,0 @@
-import{i as e,j as a}from"/build/_shared/chunk-AKP5C6Z2.js";import"/build/_shared/chunk-77NBV2IO.js";import"/build/_shared/chunk-ENKK34MM.js";import{e as o,f as t}from"/build/_shared/chunk-LXOZ5UBZ.js";t();t();var l=()=>o.createElement(a,{pageTitle:"About",path:["Home","About"]}),n=()=>({title:"RanaMC | About"}),s=()=>[...e()],u=l;export{u as default,s as links,n as meta};

@@ -1,1 +1,0 @@
-import{i as e,j as a}from"/build/_shared/chunk-AKP5C6Z2.js";import"/build/_shared/chunk-77NBV2IO.js";import"/build/_shared/chunk-ENKK34MM.js";import{e as t,f as o}from"/build/_shared/chunk-LXOZ5UBZ.js";o();o();var s=()=>t.createElement(a,{pageTitle:"Downloaded",path:["Home","Mods"]}),l=()=>({title:"RanaMC | Mods"}),n=()=>[...e()],d=s;export{d as default,n as links,l as meta};
