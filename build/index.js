@@ -180,7 +180,7 @@ var action3 = async ({ request }) => {
   const body = await request.formData();
   const data = Object.fromEntries(body);
   await import_axios3.default.post("http://localhost:3001/api/servers", data);
-  return (0, import_server_runtime3.redirect)(`/servers/${data.id}`);
+  return (0, import_server_runtime3.redirect)(`/servers/create/${data.id}/done`);
 };
 
 // route:/Users/ebykovskikh/Desktop/web/app/routes/servers/create/api/gameVersions.ts
@@ -246,21 +246,52 @@ var action5 = async ({ request }) => {
   }
 };
 
+// route:/Users/ebykovskikh/Desktop/web/app/routes/servers/create/$id.done.tsx
+var id_done_exports = {};
+__export(id_done_exports, {
+  action: () => action6,
+  default: () => id_done_default
+});
+var import_react4 = require("@remix-run/react");
+var import_server_runtime6 = require("@remix-run/server-runtime");
+var import_react5 = require("react");
+
+// app/vendors/ranaSocketIo.ts
+var import_socket = require("socket.io-client");
+var SOCKET_URL = "http://localhost:3001";
+var ranaSocket = (0, import_socket.io)(SOCKET_URL);
+
+// route:/Users/ebykovskikh/Desktop/web/app/routes/servers/create/$id.done.tsx
+var import_Loader = __toESM(require("rsuite/Loader"));
+async function action6() {
+  return (0, import_server_runtime6.redirect)("/");
+}
+var Done = () => {
+  const submit = (0, import_react4.useSubmit)();
+  const params = (0, import_react4.useParams)();
+  (0, import_react5.useEffect)(() => {
+    ranaSocket.emit("flushServers" /* FlushServers */);
+    submit(null, { action: `/servers/${params == null ? void 0 : params.id}` });
+  }, []);
+  return /* @__PURE__ */ React.createElement(import_Loader.default, null);
+};
+var id_done_default = Done;
+
 // route:/Users/ebykovskikh/Desktop/web/app/routes/servers/$id/api/remove.ts
 var remove_exports = {};
 __export(remove_exports, {
-  action: () => action6,
+  action: () => action7,
   loader: () => loader6
 });
 var import_axios6 = __toESM(require("axios"));
-var import_server_runtime6 = require("@remix-run/server-runtime");
+var import_server_runtime7 = require("@remix-run/server-runtime");
 var loader6 = () => {
-  return (0, import_server_runtime6.redirect)("/");
+  return (0, import_server_runtime7.redirect)("/");
 };
-var action6 = async ({ params }) => {
+var action7 = async ({ params }) => {
   const { id } = params;
   await import_axios6.default.delete(`http://localhost:3001/api/servers/${id}`);
-  return (0, import_server_runtime6.redirect)(`/servers`);
+  return (0, import_server_runtime7.redirect)(`/servers`);
 };
 
 // route:/Users/ebykovskikh/Desktop/web/app/routes/servers/create/index.tsx
@@ -272,12 +303,12 @@ __export(create_exports, {
   meta: () => meta2
 });
 var import_axios7 = __toESM(require("axios"));
-var import_react19 = require("react");
-var import_react20 = require("@remix-run/react");
+var import_react21 = require("react");
+var import_react22 = require("@remix-run/react");
 var import_rsuite11 = require("rsuite");
 
 // app/components/CreateServerForm/index.tsx
-var import_react4 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_rsuite2 = require("rsuite");
 var import_icons = require("@rsuite/icons");
 var INITIAL_FORM = {
@@ -285,35 +316,35 @@ var INITIAL_FORM = {
   name: ""
 };
 var CreateServerForm = ({ onSubmit }) => {
-  const [formValue, setFormValue] = (0, import_react4.useState)(INITIAL_FORM);
+  const [formValue, setFormValue] = (0, import_react6.useState)(INITIAL_FORM);
   const handleSubmit = () => {
     onSubmit(formValue);
   };
   const handleChange = (formValue2) => {
     setFormValue(formValue2);
   };
-  return /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form, {
+  return /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form, {
     layout: "inline",
     formValue,
     onChange: handleChange,
     className: "createServerForm",
     onSubmit: handleSubmit
-  }, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.Group, {
+  }, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.Group, {
     controlId: "id"
-  }, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.ControlLabel, null, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Stack, {
+  }, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.ControlLabel, null, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Stack, {
     spacing: 8
-  }, /* @__PURE__ */ import_react4.default.createElement(import_icons.Gear, null), /* @__PURE__ */ import_react4.default.createElement("span", null, "Server Id"))), /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.Control, {
+  }, /* @__PURE__ */ import_react6.default.createElement(import_icons.Gear, null), /* @__PURE__ */ import_react6.default.createElement("span", null, "Server Id"))), /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.Control, {
     name: "name",
     style: { maxWidth: 196 }
-  })), /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.Group, {
+  })), /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.Group, {
     controlId: "name"
-  }, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.ControlLabel, null, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Stack, {
+  }, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.ControlLabel, null, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Stack, {
     spacing: 8
-  }, /* @__PURE__ */ import_react4.default.createElement(import_icons.Gear, null), /* @__PURE__ */ import_react4.default.createElement("span", null, "Server Name"))), /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.Control, {
+  }, /* @__PURE__ */ import_react6.default.createElement(import_icons.Gear, null), /* @__PURE__ */ import_react6.default.createElement("span", null, "Server Name"))), /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.Control, {
     name: "id",
     autoComplete: "off",
     style: { maxWidth: 196 }
-  })), /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Form.Group, null, /* @__PURE__ */ import_react4.default.createElement(import_rsuite2.Button, {
+  })), /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Form.Group, null, /* @__PURE__ */ import_react6.default.createElement(import_rsuite2.Button, {
     type: "submit",
     appearance: "primary"
   }, "Create Server")));
@@ -321,13 +352,13 @@ var CreateServerForm = ({ onSubmit }) => {
 var CreateServerForm_default = CreateServerForm;
 
 // app/components/FloatBottom/index.tsx
-var import_react5 = __toESM(require("react"));
+var import_react7 = __toESM(require("react"));
 
 // app/components/FloatBottom/index.css
 var FloatBottom_default = "/build/_assets/index-PIUJ6HFC.css";
 
 // app/components/FloatBottom/index.tsx
-var FloatBottom = ({ children }) => /* @__PURE__ */ import_react5.default.createElement("div", {
+var FloatBottom = ({ children }) => /* @__PURE__ */ import_react7.default.createElement("div", {
   className: "floatBottom"
 }, children);
 var links2 = () => [{ rel: "stylesheet", href: FloatBottom_default }];
@@ -337,12 +368,12 @@ var FloatBottom_default2 = FloatBottom;
 var import_rsuite3 = require("rsuite");
 
 // app/components/SelectIcon/index.tsx
-var import_react7 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_classnames = __toESM(require("classnames"));
 
 // app/components/Icon/index.tsx
-var import_react6 = __toESM(require("react"));
-var Icon = ({ name, height = 32, width = 32 }) => /* @__PURE__ */ import_react6.default.createElement("img", {
+var import_react8 = __toESM(require("react"));
+var Icon = ({ name, height = 32, width = 32 }) => /* @__PURE__ */ import_react8.default.createElement("img", {
   src: `/icons/${name}.svg`,
   height,
   width,
@@ -359,10 +390,10 @@ var ICON_COLORS = {
   forge: "#202C44",
   fabric: "#BADCBA"
 };
-var SelectIcon = ({ name, size }) => /* @__PURE__ */ import_react7.default.createElement("div", {
+var SelectIcon = ({ name, size }) => /* @__PURE__ */ import_react9.default.createElement("div", {
   className: (0, import_classnames.default)("selectIcon", `selectIcon_size-${size}`),
   style: { background: ICON_COLORS[name] || "transparent" }
-}, /* @__PURE__ */ import_react7.default.createElement(Icon_default, {
+}, /* @__PURE__ */ import_react9.default.createElement(Icon_default, {
   name
 }));
 var links3 = () => [{ rel: "stylesheet", href: SelectIcon_default }];
@@ -399,7 +430,7 @@ var links4 = () => [{ rel: "stylesheet", href: GameVersionSelect_default }, ...l
 var GameVersionSelect_default2 = GameVersionSelect;
 
 // app/components/Layout/index.tsx
-var import_react13 = __toESM(require("react"));
+var import_react15 = __toESM(require("react"));
 var import_rsuite6 = require("rsuite");
 var import_Page = __toESM(require("@rsuite/icons/Page"));
 
@@ -407,16 +438,16 @@ var import_Page = __toESM(require("@rsuite/icons/Page"));
 var import_classnames3 = __toESM(require("classnames"));
 var import_rsuite4 = require("rsuite");
 var import_icons2 = require("@rsuite/icons");
-var import_react11 = require("@remix-run/react");
+var import_react13 = require("@remix-run/react");
 
 // app/components/Version/index.tsx
 var import_classnames2 = __toESM(require("classnames"));
 
 // app/hooks/useMediaQuery.ts
-var import_react8 = require("react");
+var import_react10 = require("react");
 function useMediaQuery(query) {
-  const [matches, setMatches] = (0, import_react8.useState)(false);
-  (0, import_react8.useEffect)(() => {
+  const [matches, setMatches] = (0, import_react10.useState)(false);
+  (0, import_react10.useEffect)(() => {
     const media = window.matchMedia(query);
     if (media.matches !== matches) {
       setMatches(media.matches);
@@ -446,13 +477,13 @@ var links5 = () => [{ rel: "stylesheet", href: Version_default }];
 var Version_default2 = Version;
 
 // app/components/Logo/index.tsx
-var import_react9 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 
 // app/components/Logo/index.css
 var Logo_default = "/build/_assets/index-YBJ3DXBG.css";
 
 // app/components/Logo/index.tsx
-var Logo = ({ onClick }) => /* @__PURE__ */ import_react9.default.createElement("div", {
+var Logo = ({ onClick }) => /* @__PURE__ */ import_react11.default.createElement("div", {
   role: "presentation",
   className: "logo",
   onClick
@@ -472,13 +503,13 @@ var Logo_default2 = Logo;
 var Sidebar_default = "/build/_assets/index-6JMSSL74.css";
 
 // app/components/GithubRepo/index.tsx
-var import_react10 = __toESM(require("react"));
+var import_react12 = __toESM(require("react"));
 
 // app/components/GithubRepo/index.css
 var GithubRepo_default = "/build/_assets/index-5PVJQJQZ.css";
 
 // app/components/GithubRepo/index.tsx
-var GithubRepo = () => /* @__PURE__ */ import_react10.default.createElement("a", {
+var GithubRepo = () => /* @__PURE__ */ import_react12.default.createElement("a", {
   className: "githubRepo",
   target: "_blank",
   href: "https://github.com/rana-mc",
@@ -497,8 +528,8 @@ var GithubRepo_default2 = GithubRepo;
 
 // app/components/Sidebar/index.tsx
 var Sidebar = () => {
-  const { pathname } = (0, import_react11.useLocation)();
-  const navigate = (0, import_react11.useNavigate)();
+  const { pathname } = (0, import_react13.useLocation)();
+  const navigate = (0, import_react13.useNavigate)();
   const isMobile = useMediaQuery(MOBILE_QUREY);
   const handleSelect = (eventKey) => {
     navigate(`..${eventKey}`, { replace: true });
@@ -573,7 +604,7 @@ var Layout_default = "/build/_assets/index-XGZHUSPH.css";
 
 // app/components/NavHeader/index.tsx
 var import_icons3 = require("@rsuite/icons");
-var import_react12 = __toESM(require("react"));
+var import_react14 = __toESM(require("react"));
 var import_rsuite5 = require("rsuite");
 
 // app/components/NavHeader/index.css
@@ -582,40 +613,40 @@ var NavHeader_default = "/build/_assets/index-62YIUKE5.css";
 // app/components/NavHeader/index.tsx
 var NavHeader = () => {
   const isMobile = useMediaQuery(MOBILE_QUREY);
-  const [open, setOpen] = import_react12.default.useState(false);
+  const [open, setOpen] = import_react14.default.useState(false);
   const handleNoticeSelect = () => {
     setOpen(true);
   };
-  return /* @__PURE__ */ import_react12.default.createElement(import_react12.default.Fragment, null, /* @__PURE__ */ import_react12.default.createElement("div", {
+  return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, /* @__PURE__ */ import_react14.default.createElement("div", {
     className: "navHeader"
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Navbar, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Navbar, {
     className: "navHeader__nav"
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Nav, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Nav, {
     pullRight: true,
     justified: true
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Nav.Item, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Nav.Item, {
     onSelect: handleNoticeSelect
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Badge, null, /* @__PURE__ */ import_react12.default.createElement(import_icons3.Notice, null))), /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Nav.Item, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Stack, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Badge, null, /* @__PURE__ */ import_react14.default.createElement(import_icons3.Notice, null))), /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Nav.Item, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Stack, {
     spacing: 8
-  }, !isMobile && /* @__PURE__ */ import_react12.default.createElement("span", null, "admin@rana.mc"), /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Avatar, {
+  }, !isMobile && /* @__PURE__ */ import_react14.default.createElement("span", null, "admin@rana.mc"), /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Avatar, {
     circle: true,
     size: "sm"
-  }, /* @__PURE__ */ import_react12.default.createElement(import_icons3.Admin, null))))))), /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Drawer, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_icons3.Admin, null))))))), /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Drawer, {
     open,
     size: "xs",
     full: isMobile,
     onClose: () => setOpen(false)
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Drawer.Body, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.List, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Stack, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Drawer.Body, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.List, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Stack, {
     spacing: 8
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Badge, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Badge, {
     color: "yellow"
-  }), "Server stopped")), /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Stack, {
+  }), "Server stopped")), /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Stack, {
     spacing: 8
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Badge, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Badge, {
     color: "red"
-  }), "Server crashed")), /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Stack, {
+  }), "Server crashed")), /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.List.Item, null, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Stack, {
     spacing: 8
-  }, /* @__PURE__ */ import_react12.default.createElement(import_rsuite5.Badge, {
+  }, /* @__PURE__ */ import_react14.default.createElement(import_rsuite5.Badge, {
     color: "green"
   }), "Server started"))))));
 };
@@ -623,17 +654,17 @@ var links9 = () => [{ rel: "stylesheet", href: NavHeader_default }];
 var NavHeader_default2 = NavHeader;
 
 // app/components/Layout/index.tsx
-var Layout = ({ children, pageTitle, path }) => /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.CustomProvider, {
+var Layout = ({ children, pageTitle, path }) => /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.CustomProvider, {
   theme: "light"
-}, /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Container, null, /* @__PURE__ */ import_react13.default.createElement(Sidebar_default2, null), /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Container, {
+}, /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Container, null, /* @__PURE__ */ import_react15.default.createElement(Sidebar_default2, null), /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Container, {
   className: "layout__container"
-}, /* @__PURE__ */ import_react13.default.createElement(NavHeader_default2, null), /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Header, {
+}, /* @__PURE__ */ import_react15.default.createElement(NavHeader_default2, null), /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Header, {
   className: "layout__header"
-}, path && /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Breadcrumb, null, path.map((value) => /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Breadcrumb.Item, {
+}, path && /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Breadcrumb, null, path.map((value) => /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Breadcrumb.Item, {
   key: value
-}, value))), pageTitle && /* @__PURE__ */ import_react13.default.createElement("h3", null, /* @__PURE__ */ import_react13.default.createElement(import_Page.default, {
+}, value))), pageTitle && /* @__PURE__ */ import_react15.default.createElement("h3", null, /* @__PURE__ */ import_react15.default.createElement(import_Page.default, {
   style: { fontSize: "0.8em" }
-}), pageTitle)), /* @__PURE__ */ import_react13.default.createElement(import_rsuite6.Content, null, children))));
+}), pageTitle)), /* @__PURE__ */ import_react15.default.createElement(import_rsuite6.Content, null, children))));
 var links10 = () => [
   { rel: "stylesheet", href: Layout_default },
   ...links8(),
@@ -642,8 +673,8 @@ var links10 = () => [
 var Layout_default2 = Layout;
 
 // app/components/ServerCoreBuilder/Fabric/index.tsx
-var import_react14 = require("react");
-var import_react15 = require("@remix-run/react");
+var import_react16 = require("react");
+var import_react17 = require("@remix-run/react");
 var import_rsuite7 = require("rsuite");
 
 // app/components/ServerCoreBuilder/utils.ts
@@ -657,11 +688,11 @@ var getFabricServerUrl = (gameVersionId, loaderVersion, installerVersion) => {
 // app/components/ServerCoreBuilder/Fabric/index.tsx
 var FabricCoreBuilder = ({ gameVersionId, onBuild }) => {
   var _a, _b;
-  const [installer, setInstaller] = (0, import_react14.useState)();
-  const [loader11, setLoader] = (0, import_react14.useState)();
-  const fabricInstallers = (0, import_react15.useFetcher)();
-  const fabricLoaders = (0, import_react15.useFetcher)();
-  (0, import_react14.useEffect)(() => {
+  const [installer, setInstaller] = (0, import_react16.useState)();
+  const [loader11, setLoader] = (0, import_react16.useState)();
+  const fabricInstallers = (0, import_react17.useFetcher)();
+  const fabricLoaders = (0, import_react17.useFetcher)();
+  (0, import_react16.useEffect)(() => {
     fabricInstallers.submit(null, {
       action: "servers/create/api/fabricInstallers",
       method: "post"
@@ -671,7 +702,7 @@ var FabricCoreBuilder = ({ gameVersionId, onBuild }) => {
       method: "post"
     });
   }, [gameVersionId]);
-  (0, import_react14.useEffect)(() => {
+  (0, import_react16.useEffect)(() => {
     if (loader11 && installer) {
       const loaderVersion = loader11.version;
       const installerVersion = installer.version;
@@ -731,13 +762,13 @@ var FabricCoreBuilder = ({ gameVersionId, onBuild }) => {
 var Fabric_default = FabricCoreBuilder;
 
 // app/components/ServerCoreBuilder/Forge/index.tsx
-var import_react16 = require("react");
-var import_react17 = require("@remix-run/react");
+var import_react18 = require("react");
+var import_react19 = require("@remix-run/react");
 var import_rsuite8 = require("rsuite");
 var ForgeCoreBuilder = ({ gameVersionId, onBuild }) => {
   var _a;
-  const forgeCores = (0, import_react17.useFetcher)();
-  (0, import_react16.useEffect)(() => {
+  const forgeCores = (0, import_react19.useFetcher)();
+  (0, import_react18.useEffect)(() => {
     forgeCores.submit({ version: gameVersionId }, { action: "servers/create/api/forgeCores", method: "post" });
   }, [gameVersionId]);
   const handleChange = (value) => {
@@ -788,7 +819,7 @@ var links11 = () => [{ rel: "stylesheet", href: ServerCoreBuilder_default }];
 var ServerCoreBuilder_default2 = ServerCoreBuilder;
 
 // app/components/ServerCoreTypeSelect/index.tsx
-var import_react18 = __toESM(require("react"));
+var import_react20 = __toESM(require("react"));
 var import_classnames4 = __toESM(require("classnames"));
 var import_rsuite9 = require("rsuite");
 
@@ -804,18 +835,18 @@ var ServerCoreType = ({
   active
 }) => {
   const handleClick = () => onClick && onClick();
-  return /* @__PURE__ */ import_react18.default.createElement("div", {
+  return /* @__PURE__ */ import_react20.default.createElement("div", {
     role: "presentation",
     className: (0, import_classnames4.default)("serverCoreType", { serverCoreType_active: active }),
     onClick: handleClick
-  }, /* @__PURE__ */ import_react18.default.createElement(SelectIcon_default2, {
+  }, /* @__PURE__ */ import_react20.default.createElement(SelectIcon_default2, {
     name: icon,
     size: "l"
-  }), /* @__PURE__ */ import_react18.default.createElement("div", {
+  }), /* @__PURE__ */ import_react20.default.createElement("div", {
     className: "serverCoreType__title"
-  }, /* @__PURE__ */ import_react18.default.createElement("b", null, title)), /* @__PURE__ */ import_react18.default.createElement("div", {
+  }, /* @__PURE__ */ import_react20.default.createElement("b", null, title)), /* @__PURE__ */ import_react20.default.createElement("div", {
     className: "serverCoreType__description"
-  }, /* @__PURE__ */ import_react18.default.createElement("span", null, description)));
+  }, /* @__PURE__ */ import_react20.default.createElement("span", null, description)));
 };
 var SERVER_CORE_TYPES = [
   {
@@ -836,16 +867,16 @@ var ServerCoreTypeSelect = ({ defaultValue, onChange }) => {
     if (onChange)
       onChange(value);
   };
-  return /* @__PURE__ */ import_react18.default.createElement(import_rsuite9.RadioGroup, {
+  return /* @__PURE__ */ import_react20.default.createElement(import_rsuite9.RadioGroup, {
     defaultValue,
     className: "serverCoreSelect",
     inline: true,
     name: "serverCoreSelect",
     onChange: handleChange
-  }, SERVER_CORE_TYPES.map((serverCoreType) => /* @__PURE__ */ import_react18.default.createElement(import_rsuite9.Radio, {
+  }, SERVER_CORE_TYPES.map((serverCoreType) => /* @__PURE__ */ import_react20.default.createElement(import_rsuite9.Radio, {
     key: serverCoreType.id,
     value: serverCoreType.id
-  }, /* @__PURE__ */ import_react18.default.createElement(ServerCoreType, {
+  }, /* @__PURE__ */ import_react20.default.createElement(ServerCoreType, {
     title: serverCoreType.title,
     description: serverCoreType.description,
     icon: serverCoreType.icon
@@ -893,13 +924,13 @@ var loader7 = async () => {
 };
 var findGameVersionByVersionTypeId = (gameVersions = [], versionTypeId = -1) => gameVersions == null ? void 0 : gameVersions.find((el) => el.type === versionTypeId);
 var CreateIndexRoute = () => {
-  const submit = (0, import_react20.useSubmit)();
-  const [versionTypeId, setVersionTypeId] = (0, import_react19.useState)();
-  const [gameVersionId, setGameVersionId] = (0, import_react19.useState)();
-  const [serverCoreTypeId, setServerCoreTypeId] = (0, import_react19.useState)();
-  const [serverCore, setServerCore] = (0, import_react19.useState)();
-  const versionTypes = (0, import_react20.useLoaderData)();
-  const gameVersions = (0, import_react20.useFetcher)();
+  const submit = (0, import_react22.useSubmit)();
+  const [versionTypeId, setVersionTypeId] = (0, import_react21.useState)();
+  const [gameVersionId, setGameVersionId] = (0, import_react21.useState)();
+  const [serverCoreTypeId, setServerCoreTypeId] = (0, import_react21.useState)();
+  const [serverCore, setServerCore] = (0, import_react21.useState)();
+  const versionTypes = (0, import_react22.useLoaderData)();
+  const gameVersions = (0, import_react22.useFetcher)();
   const handleVersionTypeIdChange = (value) => {
     setVersionTypeId(value);
     gameVersions.submit({ version: value.toString() }, { method: "post", action: "/servers/create/api/gameVersions" });
@@ -941,7 +972,7 @@ var CreateIndexRoute = () => {
       });
     }
   };
-  const gameVersion = (0, import_react19.useMemo)(() => findGameVersionByVersionTypeId(gameVersions.data, versionTypeId), [versionTypeId, gameVersions]);
+  const gameVersion = (0, import_react21.useMemo)(() => findGameVersionByVersionTypeId(gameVersions.data, versionTypeId), [versionTypeId, gameVersions]);
   return /* @__PURE__ */ React.createElement(Layout_default2, {
     pageTitle: "Create Server",
     path: ["Home", "Servers"]
@@ -997,32 +1028,32 @@ var create_default = CreateIndexRoute;
 // route:/Users/ebykovskikh/Desktop/web/app/routes/settings/curseforge.tsx
 var curseforge_exports = {};
 __export(curseforge_exports, {
-  action: () => action7,
+  action: () => action8,
   default: () => curseforge_default,
   links: () => links15,
   loader: () => loader8,
   meta: () => meta3
 });
-var import_react21 = require("react");
+var import_react23 = require("react");
 var import_rsuite12 = require("rsuite");
-var import_react22 = require("@remix-run/react");
+var import_react24 = require("@remix-run/react");
 var import_axios8 = __toESM(require("axios"));
 var SETTINGS_API_URL = "http://localhost:3001/api/settings";
 var loader8 = async () => {
   const response = await import_axios8.default.get(SETTINGS_API_URL);
   return response.data;
 };
-var action7 = async ({ request }) => {
+var action8 = async ({ request }) => {
   const body = await request.formData();
   const data = Object.fromEntries(body);
   import_axios8.default.post(SETTINGS_API_URL, data);
   return null;
 };
 var CurseForgeSettings = () => {
-  const submit = (0, import_react22.useSubmit)();
-  const transition = (0, import_react22.useTransition)();
-  const settings = (0, import_react22.useLoaderData)();
-  const [currentSettings, setCurrentSettings] = (0, import_react21.useState)(settings);
+  const submit = (0, import_react24.useSubmit)();
+  const transition = (0, import_react24.useTransition)();
+  const settings = (0, import_react24.useLoaderData)();
+  const [currentSettings, setCurrentSettings] = (0, import_react23.useState)(settings);
   const handleSubmit = (status, event) => {
     submit(event.currentTarget, { replace: true });
   };
@@ -1065,7 +1096,7 @@ __export(id_exports, {
   loader: () => loader9,
   meta: () => meta4
 });
-var import_react24 = require("@remix-run/react");
+var import_react26 = require("@remix-run/react");
 var import_axios9 = __toESM(require("axios"));
 
 // app/components/ServerCardLarge/index.tsx
@@ -1076,16 +1107,11 @@ var import_AppSelect = __toESM(require("@rsuite/icons/AppSelect"));
 var import_DocPass = __toESM(require("@rsuite/icons/DocPass"));
 
 // app/components/ServerLogs/index.tsx
-var import_react23 = require("react");
+var import_react25 = require("react");
 var import_lodash = __toESM(require("lodash.debounce"));
 
 // app/components/ServerLogs/index.css
 var ServerLogs_default = "/build/_assets/index-3YDOVAJF.css";
-
-// app/vendors/ranaSocketIo.ts
-var import_socket = require("socket.io-client");
-var SOCKET_URL = "http://localhost:3001";
-var ranaSocket = (0, import_socket.io)(SOCKET_URL);
 
 // app/components/ServerLogs/utils.ts
 var NODES = [
@@ -1151,8 +1177,8 @@ var UPDATE_LOGS_DELAY = 250;
 var LAST_LOGS_COUNT = 100;
 var ServerLogs = ({ serverId }) => {
   const fullServerLogs = [];
-  const [logs, setLogs] = (0, import_react23.useState)([]);
-  const handleLogAppend = (0, import_react23.useCallback)((0, import_lodash.default)((logsToUpdate) => setLogs(prepareLines(logsToUpdate.slice(-LAST_LOGS_COUNT))), UPDATE_LOGS_DELAY), []);
+  const [logs, setLogs] = (0, import_react25.useState)([]);
+  const handleLogAppend = (0, import_react25.useCallback)((0, import_lodash.default)((logsToUpdate) => setLogs(prepareLines(logsToUpdate.slice(-LAST_LOGS_COUNT))), UPDATE_LOGS_DELAY), []);
   ranaSocket.on("logs", (logsServerId, message) => {
     if (serverId) {
       if (serverId === logsServerId) {
@@ -1328,7 +1354,7 @@ var links18 = () => [
 var ServerCardLarge_default2 = ServerCardLarge;
 
 // route:/Users/ebykovskikh/Desktop/web/app/routes/servers/$id/index.tsx
-var import_react25 = require("react");
+var import_react27 = require("react");
 var loader9 = async ({ params }) => {
   const { id } = params;
   try {
@@ -1339,13 +1365,13 @@ var loader9 = async ({ params }) => {
   }
 };
 var Server = () => {
-  const submit = (0, import_react24.useSubmit)();
-  const initialServer = (0, import_react24.useLoaderData)();
-  const [server, setServer] = (0, import_react25.useState)();
-  (0, import_react25.useEffect)(() => {
+  const submit = (0, import_react26.useSubmit)();
+  const initialServer = (0, import_react26.useLoaderData)();
+  const [server, setServer] = (0, import_react27.useState)();
+  (0, import_react27.useEffect)(() => {
     setServer(initialServer.data);
   }, [initialServer.data]);
-  (0, import_react25.useEffect)(() => {
+  (0, import_react27.useEffect)(() => {
     ranaSocket.on("serverUpdate" /* ServerUpdate */, (server2) => {
       setServer(server2);
     });
@@ -1429,7 +1455,7 @@ __export(servers_exports, {
   loader: () => loader10,
   meta: () => meta7
 });
-var import_react27 = require("@remix-run/react");
+var import_react29 = require("@remix-run/react");
 var import_axios10 = __toESM(require("axios"));
 var import_rsuite16 = require("rsuite");
 
@@ -1444,9 +1470,9 @@ var import_DocPass2 = __toESM(require("@rsuite/icons/DocPass"));
 var ServerCard_default = "/build/_assets/index-MFVYKEG2.css";
 
 // app/components/ServerCard/index.tsx
-var import_react26 = require("@remix-run/react");
+var import_react28 = require("@remix-run/react");
 var ServerCard = ({ server }) => {
-  const navigate = (0, import_react26.useNavigate)();
+  const navigate = (0, import_react28.useNavigate)();
   const handleClick = () => {
     navigate(`/servers/${server.id}`);
   };
@@ -1531,7 +1557,7 @@ var loader10 = async () => {
   }
 };
 var Servers = () => {
-  const servers = (0, import_react27.useLoaderData)();
+  const servers = (0, import_react29.useLoaderData)();
   return /* @__PURE__ */ React.createElement(Layout_default2, {
     pageTitle: "Servers",
     path: ["Home", "Servers"]
@@ -1600,7 +1626,7 @@ var links26 = () => [...links10()];
 var routes_default = Index;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { "version": "26de6d09", "entry": { "module": "/build/entry.client-3KQCOT3B.js", "imports": ["/build/_shared/chunk-ENKK34MM.js", "/build/_shared/chunk-LXOZ5UBZ.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-JO5F6I2B.js", "imports": ["/build/_shared/chunk-77NBV2IO.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": false }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/about-XP4SRXJN.js", "imports": ["/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-TNJ67F3N.js", "imports": ["/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/mods/downloaded": { "id": "routes/mods/downloaded", "parentId": "root", "path": "mods/downloaded", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/mods/downloaded-DZW7E3VZ.js", "imports": ["/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/mods/gallery": { "id": "routes/mods/gallery", "parentId": "root", "path": "mods/gallery", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/mods/gallery-F2OVOZ4G.js", "imports": ["/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/$id/api/remove": { "id": "routes/servers/$id/api/remove", "parentId": "root", "path": "servers/:id/api/remove", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/$id/api/remove-45S5HCBV.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/$id/index": { "id": "routes/servers/$id/index", "parentId": "root", "path": "servers/:id", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/$id/index-VVSFXTYZ.js", "imports": ["/build/_shared/chunk-RILLXEPE.js", "/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/createServer": { "id": "routes/servers/create/api/createServer", "parentId": "root", "path": "servers/create/api/createServer", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/createServer-YXCCJXNL.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/fabricInstallers": { "id": "routes/servers/create/api/fabricInstallers", "parentId": "root", "path": "servers/create/api/fabricInstallers", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/fabricInstallers-3W45G5O6.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/fabricLoaders": { "id": "routes/servers/create/api/fabricLoaders", "parentId": "root", "path": "servers/create/api/fabricLoaders", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/fabricLoaders-FIUENHMH.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/forgeCores": { "id": "routes/servers/create/api/forgeCores", "parentId": "root", "path": "servers/create/api/forgeCores", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/forgeCores-KZVOMG2R.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/gameVersions": { "id": "routes/servers/create/api/gameVersions", "parentId": "root", "path": "servers/create/api/gameVersions", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/gameVersions-FFAA7YX2.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/index": { "id": "routes/servers/create/index", "parentId": "root", "path": "servers/create", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/create/index-R2ETTJIE.js", "imports": ["/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/index": { "id": "routes/servers/index", "parentId": "root", "path": "servers", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/index-ZUAWQOF3.js", "imports": ["/build/_shared/chunk-RILLXEPE.js", "/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": true }, "routes/settings/curseforge": { "id": "routes/settings/curseforge", "parentId": "root", "path": "settings/curseforge", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/settings/curseforge-OQBOS3SL.js", "imports": ["/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/settings/rana-mc": { "id": "routes/settings/rana-mc", "parentId": "root", "path": "settings/rana-mc", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/settings/rana-mc-PEE2R5FU.js", "imports": ["/build/_shared/chunk-AKP5C6Z2.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-26DE6D09.js" };
+var assets_manifest_default = { "version": "ef4a151b", "entry": { "module": "/build/entry.client-ZUBTHUK7.js", "imports": ["/build/_shared/chunk-A5LLPIWI.js", "/build/_shared/chunk-LXOZ5UBZ.js"] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "module": "/build/root-GB6ENKEB.js", "imports": ["/build/_shared/chunk-HKKNBERT.js", "/build/_shared/chunk-RKTA4JHR.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": true, "hasErrorBoundary": false }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/about-4DULWF6I.js", "imports": ["/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/index": { "id": "routes/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "module": "/build/routes/index-LSTUF6EC.js", "imports": ["/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/mods/downloaded": { "id": "routes/mods/downloaded", "parentId": "root", "path": "mods/downloaded", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/mods/downloaded-BT2CCAOD.js", "imports": ["/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/mods/gallery": { "id": "routes/mods/gallery", "parentId": "root", "path": "mods/gallery", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/mods/gallery-BMA4ADOC.js", "imports": ["/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/$id/api/remove": { "id": "routes/servers/$id/api/remove", "parentId": "root", "path": "servers/:id/api/remove", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/$id/api/remove-45S5HCBV.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/$id/index": { "id": "routes/servers/$id/index", "parentId": "root", "path": "servers/:id", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/$id/index-6YK7GLB3.js", "imports": ["/build/_shared/chunk-3JZRSC32.js", "/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-RN6E5LIV.js", "/build/_shared/chunk-YSIIFUAK.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/$id.done": { "id": "routes/servers/create/$id.done", "parentId": "root", "path": "servers/create/:id/done", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/$id.done-IPBD7N5C.js", "imports": ["/build/_shared/chunk-YSIIFUAK.js"], "hasAction": true, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/createServer": { "id": "routes/servers/create/api/createServer", "parentId": "root", "path": "servers/create/api/createServer", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/createServer-YXCCJXNL.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/fabricInstallers": { "id": "routes/servers/create/api/fabricInstallers", "parentId": "root", "path": "servers/create/api/fabricInstallers", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/fabricInstallers-3W45G5O6.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/fabricLoaders": { "id": "routes/servers/create/api/fabricLoaders", "parentId": "root", "path": "servers/create/api/fabricLoaders", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/fabricLoaders-FIUENHMH.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/forgeCores": { "id": "routes/servers/create/api/forgeCores", "parentId": "root", "path": "servers/create/api/forgeCores", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/forgeCores-KZVOMG2R.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/api/gameVersions": { "id": "routes/servers/create/api/gameVersions", "parentId": "root", "path": "servers/create/api/gameVersions", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/servers/create/api/gameVersions-FFAA7YX2.js", "imports": void 0, "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/create/index": { "id": "routes/servers/create/index", "parentId": "root", "path": "servers/create", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/create/index-B3LZIZZM.js", "imports": ["/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/servers/index": { "id": "routes/servers/index", "parentId": "root", "path": "servers", "index": true, "caseSensitive": void 0, "module": "/build/routes/servers/index-FMLQFEM4.js", "imports": ["/build/_shared/chunk-3JZRSC32.js", "/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": true }, "routes/settings/curseforge": { "id": "routes/settings/curseforge", "parentId": "root", "path": "settings/curseforge", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/settings/curseforge-O3WCUX3O.js", "imports": ["/build/_shared/chunk-XQTPWQMB.js", "/build/_shared/chunk-RN6E5LIV.js"], "hasAction": true, "hasLoader": true, "hasCatchBoundary": false, "hasErrorBoundary": false }, "routes/settings/rana-mc": { "id": "routes/settings/rana-mc", "parentId": "root", "path": "settings/rana-mc", "index": void 0, "caseSensitive": void 0, "module": "/build/routes/settings/rana-mc-EDHMGIVY.js", "imports": ["/build/_shared/chunk-RN6E5LIV.js"], "hasAction": false, "hasLoader": false, "hasCatchBoundary": false, "hasErrorBoundary": false } }, "url": "/build/manifest-EF4A151B.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var entry = { module: entry_server_exports };
@@ -1652,6 +1678,14 @@ var routes = {
     index: void 0,
     caseSensitive: void 0,
     module: forgeCores_exports
+  },
+  "routes/servers/create/$id.done": {
+    id: "routes/servers/create/$id.done",
+    parentId: "root",
+    path: "servers/create/:id/done",
+    index: void 0,
+    caseSensitive: void 0,
+    module: id_done_exports
   },
   "routes/servers/$id/api/remove": {
     id: "routes/servers/$id/api/remove",

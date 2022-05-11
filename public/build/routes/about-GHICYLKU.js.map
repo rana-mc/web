@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/about.tsx?browser", "../../../app/routes/about.tsx"],
+  "sourcesContent": ["export { default, links, meta } from \"/Users/ebykovskikh/Desktop/web/app/routes/about.tsx\";", "import Layout, { links as layoutLinks } from '~/components/Layout';\n\nconst About = () => <Layout pageTitle=\"About\" path={['Home', 'About']} />;\n\nexport const meta = () => ({ title: 'RanaMC | About' });\n\nexport const links = () => [...layoutLinks()];\n\nexport default About;\n"],
+  "mappings": ";;;;;;;;;;;;;AAAA;;;ACAA;AAEA,IAAM,QAAQ,MAAM,oCAAC,gBAAD;AAAA,EAAQ,WAAU;AAAA,EAAQ,MAAM,CAAC,QAAQ;AAAA;AAEtD,IAAM,OAAO,MAAO,GAAE,OAAO;AAE7B,IAAM,SAAQ,MAAM,CAAC,GAAG;AAE/B,IAAO,gBAAQ;",
+  "names": []
+}

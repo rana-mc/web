@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/mods/gallery.tsx?browser", "../../../../app/routes/mods/gallery.tsx"],
+  "sourcesContent": ["export { default, links, meta } from \"/Users/ebykovskikh/Desktop/web/app/routes/mods/gallery.tsx\";", "import Layout, { links as layoutLinks } from '~/components/Layout';\n\nconst ModsGallery = () => <Layout pageTitle=\"Gallery\" path={['Home', 'Mods']} />;\n\nexport const meta = () => ({ title: 'RanaMC | Mods' });\n\nexport const links = () => [...layoutLinks()];\n\nexport default ModsGallery;\n"],
+  "mappings": ";;;;;;;;;;;;;AAAA;;;ACAA;AAEA,IAAM,cAAc,MAAM,oCAAC,gBAAD;AAAA,EAAQ,WAAU;AAAA,EAAU,MAAM,CAAC,QAAQ;AAAA;AAE9D,IAAM,OAAO,MAAO,GAAE,OAAO;AAE7B,IAAM,SAAQ,MAAM,CAAC,GAAG;AAE/B,IAAO,kBAAQ;",
+  "names": []
+}

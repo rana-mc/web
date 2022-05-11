@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/servers/create/$id.done.tsx?browser", "../../../../../app/routes/servers/create/$id.done.tsx"],
+  "sourcesContent": ["export { default } from \"/Users/ebykovskikh/Desktop/web/app/routes/servers/create/$id.done.tsx\";", "import { useParams, useSubmit } from \"@remix-run/react\";\nimport { redirect } from \"@remix-run/server-runtime\";\nimport { useEffect } from \"react\";\nimport { ranaSocket, ServerActions } from \"~/vendors/ranaSocketIo\";\nimport Loader from \"rsuite/Loader\";\n\nexport async function action() {\n  return redirect(\"/\");\n}\n\nconst Done = () => {\n  const submit = useSubmit();\n  const params = useParams();\n\n  useEffect(() => {\n    ranaSocket.emit(ServerActions.FlushServers);\n    submit(null, { action: `/servers/${params?.id}` });\n  }, []);\n\n  return <Loader />;\n};\n\nexport default Done;\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;;;ACAA;AAEA,oBAA0B;AAQ1B,IAAM,OAAO,MAAM;AACjB,QAAM,SAAS;AACf,QAAM,SAAS;AAEf,+BAAU,MAAM;AACd,eAAW,KAAK;AAChB,WAAO,MAAM,EAAE,QAAQ,YAAY,iCAAQ;AAAA,KAC1C;AAEH,SAAO,oCAAC,gBAAD;AAAA;AAGT,IAAO,kBAAQ;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/ebykovskikh/Desktop/web/app/routes/index.tsx?browser", "../../../app/routes/index.tsx"],
+  "sourcesContent": ["export { default, links, meta } from \"/Users/ebykovskikh/Desktop/web/app/routes/index.tsx\";", "import Layout, { links as layoutLinks } from '~/components/Layout';\n\nconst Index = () => (\n  <Layout path={['Home']}>\n    <h3>Welcome to RanaMC!</h3>\n  </Layout>\n);\n\nexport const meta = () => ({\n  title: 'RanaMC | Home',\n});\n\nexport const links = () => [...layoutLinks()];\n\nexport default Index;\n"],
+  "mappings": ";;;;;;;;;;;;;AAAA;;;ACAA;AAEA,IAAM,QAAQ,MACZ,oCAAC,gBAAD;AAAA,EAAQ,MAAM,CAAC;AAAA,GACb,oCAAC,MAAD,MAAI;AAID,IAAM,OAAO,MAAO;AAAA,EACzB,OAAO;AAAA;AAGF,IAAM,SAAQ,MAAM,CAAC,GAAG;AAE/B,IAAO,iBAAQ;",
+  "names": []
+}
