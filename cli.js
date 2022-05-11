@@ -10,15 +10,6 @@ const path = require("path");
 const main = () => {
   const args = process.argv.slice(2);
   switch (args[0]) {
-    case "build":
-      getNPMRoot(function (root) {
-        // TODO: Find better way?
-        const cwd = path.resolve(root.trim(), "@rana-mc/web");
-        console.log(`cwd: ${cwd}`);
-        execSync("npx remix setup node", { stdio: "inherit", cwd });
-        execSync("npm run build", { stdio: "inherit", cwd });
-      });
-      break;
     case "start":
       getNPMRoot(function (root) {
         // TODO: Find better way?
